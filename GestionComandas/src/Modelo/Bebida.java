@@ -1,14 +1,34 @@
 package Modelo;
 
+import java.util.Date;
+
+import javax.swing.ImageIcon;
+
 public class Bebida extends Producto {
 
-	boolean alcoholica;
-	boolean cafeina;
-	
-	public Bebida(String nombre, int precio, int cantidad) {
+	private boolean alcoholica;
+	private boolean cafeina;
+	private Date fechaCaducidad;
+	private boolean azucarada;
+
+	public Bebida(String nombre, int precio, int cantidad,ImageIcon imagen,boolean alcoholica,boolean cafeina,
+			Date fechaCaducidad,boolean azucarada) {
 		super.nombre = nombre;
 		super.precio = precio;
 		super.cantidad = cantidad;
+		super.imagen = imagen;
+		this.alcoholica = alcoholica;
+		this.cafeina = cafeina;
+		this.fechaCaducidad = fechaCaducidad;
+		this.azucarada = azucarada;
+	}
+
+	public Date getFechaCaducidad() {
+		return fechaCaducidad;
+	}
+
+	public void setFechaCaducidad(Date fechaCaducidad) {
+		this.fechaCaducidad = fechaCaducidad;
 	}
 
 	public boolean isAlcoholica() {
@@ -26,6 +46,14 @@ public class Bebida extends Producto {
 	public void setCafeina(boolean cafeina) {
 		this.cafeina = cafeina;
 	}
+
+	public boolean isAzucarada() {
+		return azucarada;
+	}
+
+	public void setAzucarada(boolean azucarada) {
+		this.azucarada = azucarada;
+	}
 	
-	
+
 }

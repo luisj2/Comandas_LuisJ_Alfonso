@@ -10,6 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.ControladorComandas;
+import javax.swing.JComboBox;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
+import javax.swing.JList;
 
 public class VistaComandas extends JFrame {
 
@@ -25,11 +32,21 @@ public class VistaComandas extends JFrame {
 	public List <JPanel> paneles = new ArrayList <>();
 	public List <JButton> botonesInventario = new ArrayList<JButton>();
 	
-	public JPanel panelnventario;
+	//componenetes del panel de GestionarInventario
+	public JPanel panelGestionarInventario;
 	public JButton btnVerInventario;
 	public JButton btnAniadirProducto;
 	public JButton btnEliminarProducto;
 	public JButton btnModificarStock;
+	
+	//componentes del panel de verinventario
+	public JPanel panelVerInventario;
+	public JList listBebidas;
+	public JList listComidas;
+	public JList listPicar;
+	
+	
+	
 	
 
 	/**
@@ -61,26 +78,37 @@ public class VistaComandas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		panelnventario = new JPanel();
-		panelnventario.setBounds(0, 0, 776, 713);
-		contentPane.add(panelnventario);
-		panelnventario.setLayout(null);
+		panelVerInventario = new JPanel();
+		panelVerInventario.setBounds(0, 0, 776, 713);
+		contentPane.add(panelVerInventario);
+		panelVerInventario.setLayout(null);
+		panelVerInventario.setVisible(false);
 		
-		btnVerInventario = new JButton("Ver Inventario");
-		btnVerInventario.setBounds(350, 45, 133, 28);
-		panelnventario.add(btnVerInventario);
+		JLabel lblNewLabel = new JLabel("Bebidas");
+		lblNewLabel.setBounds(59, 65, 120, 27);
+		panelVerInventario.add(lblNewLabel);
 		
-		btnAniadirProducto = new JButton("A\u00F1adir producto");
-		btnAniadirProducto.setBounds(350, 129, 133, 28);
-		panelnventario.add(btnAniadirProducto);
+		listBebidas = new JList();
+		listBebidas.setBounds(23, 100, 187, 516);
+		panelVerInventario.add(listBebidas);
+		listBebidas.setVisible(false);
 		
-		btnEliminarProducto = new JButton("Eliminar Producto");
-		btnEliminarProducto.setBounds(350, 224, 133, 28);
-		panelnventario.add(btnEliminarProducto);
+		JLabel lblComidas = new JLabel("Comidas");
+		lblComidas.setBounds(300, 65, 120, 27);
+		panelVerInventario.add(lblComidas);
 		
-		btnModificarStock = new JButton("Modificar Stock");
-		btnModificarStock.setBounds(350, 307, 133, 28);
-		panelnventario.add(btnModificarStock);
+		listComidas = new JList();
+		listComidas.setBounds(264, 100, 187, 516);
+		panelVerInventario.add(listComidas);
+		//listComidas.setVisible(false);
+		
+		JLabel lblComidasPicar = new JLabel("Comidas Picar");
+		lblComidasPicar.setBounds(531, 65, 120, 27);
+		panelVerInventario.add(lblComidasPicar);
+		
+		listPicar = new JList();
+		listPicar.setBounds(531, 100, 187, 496);
+		panelVerInventario.add(listPicar);
 		
 		panelInicial = new JPanel();
 		panelInicial.setBounds(0, 0, 776, 713);
@@ -99,6 +127,28 @@ public class VistaComandas extends JFrame {
 		btnGestionCaja = new JButton("Gestionar Caja");
 		btnGestionCaja.setBounds(266, 268, 177, 28);
 		panelInicial.add(btnGestionCaja);
+		
+		panelGestionarInventario = new JPanel();
+		panelGestionarInventario.setBounds(0, 0, 776, 713);
+		contentPane.add(panelGestionarInventario);
+		panelGestionarInventario.setLayout(null);
+		panelGestionarInventario.setVisible(false);
+		
+		btnVerInventario = new JButton("Ver Inventario");
+		btnVerInventario.setBounds(350, 45, 133, 28);
+		panelGestionarInventario.add(btnVerInventario);
+		
+		btnAniadirProducto = new JButton("A\u00F1adir producto");
+		btnAniadirProducto.setBounds(350, 129, 133, 28);
+		panelGestionarInventario.add(btnAniadirProducto);
+		
+		btnEliminarProducto = new JButton("Eliminar Producto");
+		btnEliminarProducto.setBounds(350, 224, 133, 28);
+		panelGestionarInventario.add(btnEliminarProducto);
+		
+		btnModificarStock = new JButton("Modificar Stock");
+		btnModificarStock.setBounds(350, 307, 133, 28);
+		panelGestionarInventario.add(btnModificarStock);
 		
 		guardarBotonesIniciales();
 		guardarBotonesInventario();
@@ -122,8 +172,8 @@ public class VistaComandas extends JFrame {
 	
 	public void guardarPaneles() {
 		paneles.add(panelInicial);
-		paneles.add(panelnventario);
-		
+		paneles.add(panelGestionarInventario);
+		paneles.add(panelVerInventario);
 	}
 	
 	

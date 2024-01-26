@@ -1,10 +1,13 @@
 package Modelo;
 
+import javax.swing.ImageIcon;
+
 public class Producto {
 
 	protected String nombre;
 	protected int precio;
 	protected int cantidad;
+	protected ImageIcon imagen;
 	
 	public String getNombre() {
 		return nombre;
