@@ -10,8 +10,8 @@ public class Bebida extends Producto {
 	private boolean cafeina;
 	private Date fechaCaducidad;
 	private boolean azucarada;
-
-	public Bebida(String nombre, int precio, int cantidad,ImageIcon imagen,boolean alcoholica,boolean cafeina,
+	
+	public Bebida(String nombre, double precio, int cantidad,ImageIcon imagen,boolean alcoholica,boolean cafeina,
 			Date fechaCaducidad,boolean azucarada) {
 		super.nombre = nombre;
 		super.precio = precio;

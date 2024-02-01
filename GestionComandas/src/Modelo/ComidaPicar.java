@@ -7,7 +7,7 @@ public class ComidaPicar extends Producto {
 	
 	boolean picante;
 	
-	public ComidaPicar (String nombre, int precio, int cantidad,ImageIcon imagen,boolean picante) {
+	public ComidaPicar (String nombre, double precio, int cantidad,ImageIcon imagen,boolean picante) {
 		super.cantidad = cantidad;
 		super.nombre = nombre;
 		super.imagen = imagen;

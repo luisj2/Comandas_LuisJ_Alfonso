@@ -6,7 +6,7 @@ public class Comida extends Producto {
 	
 	private boolean esVegetariana;
 	
-	public Comida(String nombre, int precio, int cantidad,boolean esVegetariana) {
+	public Comida(String nombre, double precio, int cantidad,boolean esVegetariana) {
 		super.nombre = nombre;
 		super.precio = precio;
 		super.cantidad = cantidad;
