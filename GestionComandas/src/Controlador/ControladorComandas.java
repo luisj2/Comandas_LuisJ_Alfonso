@@ -41,6 +41,7 @@ public class ControladorComandas implements ActionListener {
 		for (JButton boton : vista.botonesInventario) {
 			boton.addActionListener(this);
 		}
+		vista.btnAtras.addActionListener(this);
 
 	}
 
@@ -72,6 +73,10 @@ public class ControladorComandas implements ActionListener {
 
 			ponerProducto();
 
+		}
+		if(vista.btnAtras == e.getSource()) {
+			vista.panelesInvisibles();
+			vista.panelInicial.setVisible(true);
 		}
 
 	}
