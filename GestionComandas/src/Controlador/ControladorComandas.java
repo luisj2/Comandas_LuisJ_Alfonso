@@ -23,6 +23,7 @@ public class ControladorComandas implements ActionListener {
 
 	private VistaComandas vista;
 	static List<Producto> inventario;
+	static Producto productoAniadir;
 
 	public ControladorComandas(VistaComandas vista) {
 		this.vista = vista;
@@ -63,7 +64,7 @@ public class ControladorComandas implements ActionListener {
 
 		if (vista.btnSiguienteProducto == e.getSource()) {
 
-			aniadirProducto();
+			siguienteProducto();
 
 		}
 
@@ -76,37 +77,62 @@ public class ControladorComandas implements ActionListener {
 	}
 
 	private void ponerProducto() {
-		Producto producto = new Producto();
-		
-		producto.setCantidad(1);
-		producto.setNombre(vista.textPaneNombre.getText().toString());
-		producto.setPrecio(Double.parseDouble(vista.textCostoProducto.getText().toString()));
-		
+
+		productoAniadir.setCantidad(1);
+
 		if (vista.boxTipoProducto.getSelectedItem().toString().equals(vista.opcionesProductos[0])) {
-			
-				
-					
-			} else {
-				System.out.println("Rellena todas las opciones");
-			}
 
 		}
+	}
 
-	
+	/*
+	 * private Bebida new Bebida() { Bebida bebida = new Bebida();
+	 * bebida.setPrecio(productoAniadir.getPrecio());
+	 * bebida.setNombre(productoAniadir.getNombre()); bebida.setCantidad(1);
+	 * bebida.setImagen(productoAniadir.getImagen()); String fecha =
+	 * vista.textPaneFechaCaducidad.getText().toString();
+	 * 
+	 * if (vista.grupo1.getSelection() != null) { if
+	 * (vista.grupo1.getSelection().equals(vista.radioBtnSi.getModel())) {
+	 * bebida.setAlcoholica(true);
+	 * 
+	 * }else { bebida.setAlcoholica(false); } } else {
+	 * System.out.println("Rellena los primeros botones"); }
+	 * 
+	 * if (vista.grupoCafeina.getSelection() != null) { if
+	 * (vista.grupoCafeina.getSelection().equals(vista.radioBtnCafeinaSi.getModel())
+	 * ) { bebida.setCafeina(true); }else { bebida.setCafeina(false); } } else {
+	 * System.out.println("Rellena los segundos botones"); } if
+	 * (vista.grupoAzucar.getSelection() != null) { if
+	 * (vista.grupoAzucar.getSelection().equals(vista.radioBtnAzucarSi.getModel()))
+	 * { bebida.setAzucarada(true); }else { bebida.setAzucarada(false); } } else {
+	 * System.out.println("Rellena los terceros botones"); }
+	 * 
+	 * 
+	 * 
+	 * inventario.add(bebida); System.out.println("Bebida añadida"); } else {
+	 * System.out.println("Raellena todas las opciones"); } }
+	 */
 
-	private void aniadirProducto() {
+	private void siguienteProducto() {
+
+		productoAniadir = new Producto();
+
 		String coste = vista.textCostoProducto.getText().toString();
-		if (coste.contains(",")) {
-			coste = coste.replace(',', '.');
-		}
-
 		String rutaImagen = vista.textRutaImagen.getText().toString();
 		boolean rellenarCampos = false;
 		boolean pasoCorrecto = false;
 
+		String nombreProducto = vista.textPaneNombre.getText().toString();
+		productoAniadir.setNombre(nombreProducto);
+
 		if (!coste.isEmpty()) {
 			try {
+				if (coste.contains(",")) {
+					coste = coste.replace(',', '.');
+				}
 				double costeDouble = Double.parseDouble(coste);
+				productoAniadir.setPrecio(costeDouble);
 				pasoCorrecto = true;
 			} catch (Exception e2) {
 				System.out.println("Introduce numeros en el coste");
@@ -119,7 +145,8 @@ public class ControladorComandas implements ActionListener {
 		if (!rutaImagen.isEmpty()) {
 			try {
 				ImageIcon imagenProducto = new ImageIcon(rutaImagen);
-				System.out.println("Imagen correcta");
+				productoAniadir.setImagen(imagenProducto);
+				// System.out.println("Imagen correcta");
 
 			} catch (Exception e2) {
 				System.out.println("Introduce una ruta de imagen correcta");

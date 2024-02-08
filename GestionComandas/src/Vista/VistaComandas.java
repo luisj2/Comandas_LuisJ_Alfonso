@@ -107,118 +107,118 @@ public class VistaComandas extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		panelAniadirProducto = new JPanel();
-		panelAniadirProducto.setLayout(null);
-		panelAniadirProducto.setBounds(0, 0, 776, 713);
-		contentPane.add(panelAniadirProducto);
-		panelAniadirProducto.setVisible(false);
-
-		boxTipoProducto = new JComboBox(opcionesProductos);
-		boxTipoProducto.setBounds(273, 94, 143, 21);
-		panelAniadirProducto.add(boxTipoProducto);
-
-		lblNewLabel_1 = new JLabel("\u00BFCual sera el costo del producto?");
-		lblNewLabel_1.setBounds(240, 178, 176, 13);
-		panelAniadirProducto.add(lblNewLabel_1);
-
-		JLabel lblNewLabel_2 = new JLabel("\u00BFQue tipo de producto quieres a\u00F1adir?");
-		lblNewLabel_2.setBounds(240, 43, 221, 28);
-		panelAniadirProducto.add(lblNewLabel_2);
-
-		textCostoProducto = new JTextPane();
-		textCostoProducto.setBounds(251, 232, 165, 19);
-		panelAniadirProducto.add(textCostoProducto);
-
-		lblNewLabel_3 = new JLabel("Introduce ruta de la imagen (opcional)");
-		lblNewLabel_3.setBounds(240, 464, 193, 13);
-		panelAniadirProducto.add(lblNewLabel_3);
-
-		textRutaImagen = new JTextPane();
-		textRutaImagen.setBounds(251, 517, 165, 19);
-		panelAniadirProducto.add(textRutaImagen);
-
-		btnSiguienteProducto = new JButton("Siguiente");
-		btnSiguienteProducto.setBounds(285, 587, 85, 21);
-		panelAniadirProducto.add(btnSiguienteProducto);
-
-		JLabel lblNewLabel_4 = new JLabel("Introduce el nombre del producto");
-		lblNewLabel_4.setBounds(251, 313, 239, 13);
-		panelAniadirProducto.add(lblNewLabel_4);
-
-		textPaneNombre = new JTextPane();
-		textPaneNombre.setBounds(251, 372, 165, 19);
-		panelAniadirProducto.add(textPaneNombre);
-		panelAniadirProducto.setVisible(false);
-
-		panelPreguntasProducto = new JPanel();
-		panelPreguntasProducto.setBounds(0, 0, 776, 713);
-		contentPane.add(panelPreguntasProducto);
-		panelPreguntasProducto.setLayout(null);
-		panelPreguntasProducto.setVisible(false);
-
-		radioBtnSi = new JRadioButton("SI");
-		radioBtnSi.setBounds(182, 116, 103, 21);
-		panelPreguntasProducto.add(radioBtnSi);
-		grupo1.add(radioBtnSi);
-
-		rdbtnNo = new JRadioButton("NO");
-		rdbtnNo.setBounds(287, 116, 103, 21);
-		panelPreguntasProducto.add(rdbtnNo);
-		grupo1.add(rdbtnNo);
-
-		lblPreguntaProducto = new JLabel("\u00BFEl Producto");
-		lblPreguntaProducto.setBounds(182, 57, 196, 13);
-		panelPreguntasProducto.add(lblPreguntaProducto);
-
-		radioBtnCafeinaSi = new JRadioButton("SI");
-		radioBtnCafeinaSi.setBounds(182, 244, 103, 21);
-		panelPreguntasProducto.add(radioBtnCafeinaSi);
-		componentesBebida.add(radioBtnCafeinaSi);
-		grupoCafeina.add(radioBtnCafeinaSi);
-
-		radioBtnCafeinaNo = new JRadioButton("NO");
-		radioBtnCafeinaNo.setBounds(287, 244, 103, 21);
-		panelPreguntasProducto.add(radioBtnCafeinaNo);
-		componentesBebida.add(radioBtnCafeinaNo);
-		grupoCafeina.add(radioBtnCafeinaNo);
-
-		lblCafeina = new JLabel("\u00BFTiene cafeina la bebida?");
-		lblCafeina.setBounds(182, 185, 196, 13);
-		panelPreguntasProducto.add(lblCafeina);
-		componentesBebida.add(lblCafeina);
-
-		lblCaducaBebida = new JLabel("Cuando caduca la bebida");
-		lblCaducaBebida.setBounds(182, 350, 196, 13);
-		panelPreguntasProducto.add(lblCaducaBebida);
-		componentesBebida.add(lblCaducaBebida);
-
-		textPaneFechaCaducidad = new JTextPane();
-		textPaneFechaCaducidad.setBounds(182, 412, 196, 19);
-		panelPreguntasProducto.add(textPaneFechaCaducidad);
-		componentesBebida.add(textPaneFechaCaducidad);
-
-		radioBtnAzucarSi = new JRadioButton("SI");
-		radioBtnAzucarSi.setBounds(182, 543, 103, 21);
-		panelPreguntasProducto.add(radioBtnAzucarSi);
-		componentesBebida.add(radioBtnAzucarSi);
-		grupoAzucar.add(radioBtnAzucarSi);
-
-		radioBtnAzucarNo = new JRadioButton("NO");
-		radioBtnAzucarNo.setBounds(287, 543, 103, 21);
-		panelPreguntasProducto.add(radioBtnAzucarNo);
-		componentesBebida.add(radioBtnAzucarNo);
-		grupoAzucar.add(radioBtnAzucarNo);
-
-		lblAzucarBebida = new JLabel("Contiene azucar la bebida");
-		lblAzucarBebida.setBounds(182, 484, 196, 13);
-		panelPreguntasProducto.add(lblAzucarBebida);
-		componentesBebida.add(lblAzucarBebida);
-
-		btnPonerProducto = new JButton("A\u00F1adir");
-		btnPonerProducto.setBounds(218, 629, 85, 21);
-		panelPreguntasProducto.add(btnPonerProducto);
-		componentesBebida.add(btnPonerProducto);
+						
+								panelPreguntasProducto = new JPanel();
+								panelPreguntasProducto.setBounds(0, 0, 776, 713);
+								contentPane.add(panelPreguntasProducto);
+								panelPreguntasProducto.setLayout(null);
+								panelPreguntasProducto.setVisible(false);
+								
+										radioBtnSi = new JRadioButton("SI");
+										radioBtnSi.setBounds(182, 116, 103, 21);
+										panelPreguntasProducto.add(radioBtnSi);
+										grupo1.add(radioBtnSi);
+										
+												rdbtnNo = new JRadioButton("NO");
+												rdbtnNo.setBounds(287, 116, 103, 21);
+												panelPreguntasProducto.add(rdbtnNo);
+												grupo1.add(rdbtnNo);
+												
+														lblPreguntaProducto = new JLabel("\u00BFEl Producto");
+														lblPreguntaProducto.setBounds(182, 57, 196, 13);
+														panelPreguntasProducto.add(lblPreguntaProducto);
+														
+																radioBtnCafeinaSi = new JRadioButton("SI");
+																radioBtnCafeinaSi.setBounds(182, 244, 103, 21);
+																panelPreguntasProducto.add(radioBtnCafeinaSi);
+																componentesBebida.add(radioBtnCafeinaSi);
+																grupoCafeina.add(radioBtnCafeinaSi);
+																
+																		radioBtnCafeinaNo = new JRadioButton("NO");
+																		radioBtnCafeinaNo.setBounds(287, 244, 103, 21);
+																		panelPreguntasProducto.add(radioBtnCafeinaNo);
+																		componentesBebida.add(radioBtnCafeinaNo);
+																		grupoCafeina.add(radioBtnCafeinaNo);
+																		
+																				lblCafeina = new JLabel("\u00BFTiene cafeina la bebida?");
+																				lblCafeina.setBounds(182, 185, 196, 13);
+																				panelPreguntasProducto.add(lblCafeina);
+																				componentesBebida.add(lblCafeina);
+																				
+																						lblCaducaBebida = new JLabel("Cuando caduca la bebida");
+																						lblCaducaBebida.setBounds(182, 350, 196, 13);
+																						panelPreguntasProducto.add(lblCaducaBebida);
+																						componentesBebida.add(lblCaducaBebida);
+																						
+																								textPaneFechaCaducidad = new JTextPane();
+																								textPaneFechaCaducidad.setBounds(182, 412, 196, 19);
+																								panelPreguntasProducto.add(textPaneFechaCaducidad);
+																								componentesBebida.add(textPaneFechaCaducidad);
+																								
+																										radioBtnAzucarSi = new JRadioButton("SI");
+																										radioBtnAzucarSi.setBounds(182, 543, 103, 21);
+																										panelPreguntasProducto.add(radioBtnAzucarSi);
+																										componentesBebida.add(radioBtnAzucarSi);
+																										grupoAzucar.add(radioBtnAzucarSi);
+																										
+																												radioBtnAzucarNo = new JRadioButton("NO");
+																												radioBtnAzucarNo.setBounds(287, 543, 103, 21);
+																												panelPreguntasProducto.add(radioBtnAzucarNo);
+																												componentesBebida.add(radioBtnAzucarNo);
+																												grupoAzucar.add(radioBtnAzucarNo);
+																												
+																														lblAzucarBebida = new JLabel("Contiene azucar la bebida");
+																														lblAzucarBebida.setBounds(182, 484, 196, 13);
+																														panelPreguntasProducto.add(lblAzucarBebida);
+																														componentesBebida.add(lblAzucarBebida);
+																														
+																																btnPonerProducto = new JButton("A\u00F1adir");
+																																btnPonerProducto.setBounds(218, 629, 85, 21);
+																																panelPreguntasProducto.add(btnPonerProducto);
+																																componentesBebida.add(btnPonerProducto);
+				
+						panelAniadirProducto = new JPanel();
+						panelAniadirProducto.setLayout(null);
+						panelAniadirProducto.setBounds(0, 0, 776, 713);
+						contentPane.add(panelAniadirProducto);
+						panelAniadirProducto.setVisible(false);
+						
+								boxTipoProducto = new JComboBox(opcionesProductos);
+								boxTipoProducto.setBounds(273, 94, 143, 21);
+								panelAniadirProducto.add(boxTipoProducto);
+								
+										lblNewLabel_1 = new JLabel("\u00BFCual sera el costo del producto?");
+										lblNewLabel_1.setBounds(240, 178, 176, 13);
+										panelAniadirProducto.add(lblNewLabel_1);
+										
+												JLabel lblNewLabel_2 = new JLabel("\u00BFQue tipo de producto quieres a\u00F1adir?");
+												lblNewLabel_2.setBounds(240, 43, 221, 28);
+												panelAniadirProducto.add(lblNewLabel_2);
+												
+														textCostoProducto = new JTextPane();
+														textCostoProducto.setBounds(251, 232, 165, 19);
+														panelAniadirProducto.add(textCostoProducto);
+														
+																lblNewLabel_3 = new JLabel("Introduce ruta de la imagen (opcional)");
+																lblNewLabel_3.setBounds(240, 464, 193, 13);
+																panelAniadirProducto.add(lblNewLabel_3);
+																
+																		textRutaImagen = new JTextPane();
+																		textRutaImagen.setBounds(251, 517, 165, 19);
+																		panelAniadirProducto.add(textRutaImagen);
+																		
+																				btnSiguienteProducto = new JButton("Siguiente");
+																				btnSiguienteProducto.setBounds(285, 587, 85, 21);
+																				panelAniadirProducto.add(btnSiguienteProducto);
+																				
+																						JLabel lblNewLabel_4 = new JLabel("Introduce el nombre del producto");
+																						lblNewLabel_4.setBounds(251, 313, 239, 13);
+																						panelAniadirProducto.add(lblNewLabel_4);
+																						
+																								textPaneNombre = new JTextPane();
+																								textPaneNombre.setBounds(251, 372, 165, 19);
+																								panelAniadirProducto.add(textPaneNombre);
+																								panelAniadirProducto.setVisible(false);
 
 		panelGestionarInventario = new JPanel();
 		panelGestionarInventario.setBounds(0, 0, 776, 713);

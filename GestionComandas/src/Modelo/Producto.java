@@ -13,6 +13,15 @@ public class Producto {
 	public Producto() {
 		super();
 	}
+	
+	public ImageIcon getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(ImageIcon imagen) {
+		this.imagen = imagen;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

@@ -22,6 +22,11 @@ public class Bebida extends Producto {
 		this.fechaCaducidad = fechaCaducidad;
 		this.azucarada = azucarada;
 	}
+	
+
+	public Bebida() {
+	}
+
 
 	public Date getFechaCaducidad() {
 		return fechaCaducidad;
