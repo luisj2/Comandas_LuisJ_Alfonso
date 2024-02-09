@@ -78,6 +78,10 @@ public class ControladorComandas implements ActionListener {
 			vista.panelesInvisibles();
 			vista.panelInicial.setVisible(true);
 		}
+		
+		if(vista.btnEliminarProducto == e.getSource()) {
+			
+		}
 
 	}
 

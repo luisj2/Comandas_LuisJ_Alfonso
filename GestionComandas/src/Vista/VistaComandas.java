@@ -18,6 +18,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.ControladorComandas;
+import java.awt.Color;
 
 public class VistaComandas extends JFrame {
 
@@ -81,7 +82,14 @@ public class VistaComandas extends JFrame {
 	
 	public JPanel atras;
 	public JButton btnAtras;
-
+	private JPanel eliminarPanel;
+	private JPanel panelModificarStock;
+	private JButton btnEliminar;
+	
+	public JRadioButton rdbtnAniadir;
+	public JRadioButton rdbtnEliminar;
+	public JButton btnMasProducto;
+	public JButton btnMenosProducto;
 	/**
 	 * Launch the application.
 	 */
@@ -110,6 +118,64 @@ public class VistaComandas extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+				
+				panelModificarStock = new JPanel();
+				panelModificarStock.setBounds(0, 0, 776, 713);
+				contentPane.add(panelModificarStock);
+				panelModificarStock.setLayout(null);
+				
+				JList listBebidas_1 = new JList();
+				listBebidas_1.setBounds(53, 108, 185, 514);
+				panelModificarStock.add(listBebidas_1);
+				
+				JLabel lblNewLabel_7 = new JLabel("Productos");
+				lblNewLabel_7.setBounds(92, 85, 139, 13);
+				panelModificarStock.add(lblNewLabel_7);
+				
+				JLabel lblNewLabel_8 = new JLabel("");
+				lblNewLabel_8.setBounds(383, 324, 45, 31);
+				panelModificarStock.add(lblNewLabel_8);
+				
+				btnMasProducto = new JButton("-");
+				btnMasProducto.setBounds(324, 329, 35, 21);
+				panelModificarStock.add(btnMasProducto);
+				
+				btnMenosProducto = new JButton("+");
+				btnMenosProducto.setBounds(445, 329, 35, 21);
+				panelModificarStock.add(btnMenosProducto);
+				
+				rdbtnAniadir = new JRadioButton("Aniadir");
+				rdbtnAniadir.setBounds(317, 394, 103, 21);
+				panelModificarStock.add(rdbtnAniadir);
+				
+				rdbtnEliminar = new JRadioButton("Quitar");
+				rdbtnEliminar.setBounds(422, 394, 103, 21);
+				panelModificarStock.add(rdbtnEliminar);
+				
+				eliminarPanel = new JPanel();
+				eliminarPanel.setBounds(0, 0, 776, 713);
+				contentPane.add(eliminarPanel);
+				eliminarPanel.setLayout(null);
+				
+				JLabel lblNewLabel_5 = new JLabel("Introduce el producto que quieres eliminar");
+				lblNewLabel_5.setBounds(241, 37, 264, 13);
+				eliminarPanel.add(lblNewLabel_5);
+				
+				JTextPane textPane = new JTextPane();
+				textPane.setBounds(253, 78, 189, 19);
+				eliminarPanel.add(textPane);
+				
+				JLabel lblNewLabel_6 = new JLabel("Introduce la cantidad del producto");
+				lblNewLabel_6.setBounds(253, 208, 201, 13);
+				eliminarPanel.add(lblNewLabel_6);
+				
+				JTextPane textPane_1 = new JTextPane();
+				textPane_1.setBounds(241, 250, 201, 19);
+				eliminarPanel.add(textPane_1);
+				
+				btnEliminar = new JButton("Eliminar");
+				btnEliminar.setBounds(306, 344, 85, 21);
+				eliminarPanel.add(btnEliminar);
 		
 				JPanel atras_1 = new JPanel();
 				atras_1.setBounds(36, 29, 78, 31);
