@@ -133,8 +133,7 @@ public class VistaComandas extends JFrame {
 				
 						btnAtras = new JButton("");
 						atras_1.add(btnAtras);
-						btnAtras.setIcon(new ImageIcon(
-								"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\felchaAtras.png"));
+						btnAtras.setIcon(new ImageIcon("src//imagenes//felchaAtras.png"));
 
 		panelModificarStock = new JPanel();
 		panelModificarStock.setBounds(193, 117, 583, 596);
@@ -190,7 +189,7 @@ public class VistaComandas extends JFrame {
 
 		lblImagenLogo = new JLabel("");
 		lblImagenLogo.setIcon(new ImageIcon(
-				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\logoBar.png"));
+				"src//imagenes//logoBar.png"));
 		lblImagenLogo.setBounds(269, 10, 196, 98);
 		panelParteArriba.add(lblImagenLogo);
 
@@ -207,25 +206,25 @@ public class VistaComandas extends JFrame {
 
 		btnGestionInventario = new JButton("");
 		btnGestionInventario.setIcon(new ImageIcon(
-				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\gestionInventario.png"));
+				"src//imagenes//gestionInventario.png"));
 		btnGestionInventario.setBounds(10, 254, 156, 87);
 		panelCentral.add(btnGestionInventario);
 
 		btnGestionComandas = new JButton("");
 		btnGestionComandas.setIcon(new ImageIcon(
-				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\imagenComandas.png"));
+				"src//imagenes//imagenComandas.png"));
 		btnGestionComandas.setBounds(10, 403, 156, 87);
 		panelCentral.add(btnGestionComandas);
 
 		btnGestionCaja = new JButton("");
 		btnGestionCaja.setIcon(new ImageIcon(
-				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\caja-registradora.png"));
+				"src//imagenes//caja-registradora.png"));
 		btnGestionCaja.setBounds(10, 537, 156, 87);
 		panelCentral.add(btnGestionCaja);
 
 		btnExit = new JButton("");
 		btnExit.setIcon(new ImageIcon(
-				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\apagar.png"));
+				"src//imagenes//apagar.png"));
 		btnExit.setBounds(10, 22, 156, 87);
 		panelCentral.add(btnExit);
 
