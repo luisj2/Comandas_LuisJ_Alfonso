@@ -19,12 +19,15 @@ import javax.swing.border.EmptyBorder;
 
 import Controlador.ControladorComandas;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.border.LineBorder;
+import javax.swing.SwingConstants;
+import javax.swing.JSpinner;
 
 public class VistaComandas extends JFrame {
 
 	private JPanel contentPane;
-
-	public JPanel panelInicial;
 	public JButton btnGestionInventario;
 	public JButton btnGestionComandas;
 	public JButton btnGestionCaja;
@@ -40,21 +43,10 @@ public class VistaComandas extends JFrame {
 	public JButton btnEliminarProducto;
 	public JButton btnModificarStock;
 
-	// Componentes del panel de verinventario
-	public JPanel panelVerInventario;
-	JScrollPane scrollBebidas;
-	public JList listBebidas;
-	JScrollPane scrollComidas;
-	public JList listComidas;
-	JScrollPane scrollPicar;
-	public JList listPicar;
-
 	public JPanel panelAniadirProducto;
 	public String[] opcionesProductos = { "Bebidas", "Comidas", "Comida para picar" };
 	public JComboBox boxTipoProducto;
 	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_3;
-	public JTextPane textRutaImagen;
 	public JButton btnSiguienteProducto;
 
 	public JPanel panelPreguntasProducto;
@@ -79,17 +71,32 @@ public class VistaComandas extends JFrame {
 	public ButtonGroup grupo1 = new ButtonGroup();
 	public JTextPane textCostoProducto;
 	public JTextPane textPaneNombre;
-	
+
 	public JPanel atras;
 	public JButton btnAtras;
-	private JPanel eliminarPanel;
-	private JPanel panelModificarStock;
-	private JButton btnEliminar;
-	
+	public JPanel eliminarPanel;
+	public JPanel panelModificarStock;
+	public JButton btnEliminar;
+
 	public JRadioButton rdbtnAniadir;
 	public JRadioButton rdbtnEliminar;
-	public JButton btnMasProducto;
-	public JButton btnMenosProducto;
+	private ButtonGroup grupoStock = new ButtonGroup();
+	private JPanel panelParteArriba;
+	private JLabel lblImagenLogo;
+	private JLabel lblNewLabel_9;
+	public JPanel panelVerInventario;
+	private JLabel lblNewLabel;
+
+	public JList listBebidas;
+	public JList listComidas;
+	public JList listPicar;
+	public JButton btnExit;
+
+	public JComboBox boxProductosEliminar;
+	public JComboBox boxStock;
+	public JButton btnModStock;
+	public JSpinner spinnerModStock;
+
 	/**
 	 * Launch the application.
 	 */
@@ -99,6 +106,7 @@ public class VistaComandas extends JFrame {
 				try {
 					VistaComandas frame = new VistaComandas();
 					ControladorComandas controlador = new ControladorComandas(frame);
+
 					frame.setVisible(true);
 
 				} catch (Exception e) {
@@ -118,107 +126,150 @@ public class VistaComandas extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-				
-				panelModificarStock = new JPanel();
-				panelModificarStock.setBounds(0, 0, 776, 713);
-				contentPane.add(panelModificarStock);
-				panelModificarStock.setLayout(null);
-				
-				JList listBebidas_1 = new JList();
-				listBebidas_1.setBounds(53, 108, 185, 514);
-				panelModificarStock.add(listBebidas_1);
-				
-				JLabel lblNewLabel_7 = new JLabel("Productos");
-				lblNewLabel_7.setBounds(92, 85, 139, 13);
-				panelModificarStock.add(lblNewLabel_7);
-				
-				JLabel lblNewLabel_8 = new JLabel("");
-				lblNewLabel_8.setBounds(383, 324, 45, 31);
-				panelModificarStock.add(lblNewLabel_8);
-				
-				btnMasProducto = new JButton("-");
-				btnMasProducto.setBounds(324, 329, 35, 21);
-				panelModificarStock.add(btnMasProducto);
-				
-				btnMenosProducto = new JButton("+");
-				btnMenosProducto.setBounds(445, 329, 35, 21);
-				panelModificarStock.add(btnMenosProducto);
-				
-				rdbtnAniadir = new JRadioButton("Aniadir");
-				rdbtnAniadir.setBounds(317, 394, 103, 21);
-				panelModificarStock.add(rdbtnAniadir);
-				
-				rdbtnEliminar = new JRadioButton("Quitar");
-				rdbtnEliminar.setBounds(422, 394, 103, 21);
-				panelModificarStock.add(rdbtnEliminar);
-				
-				eliminarPanel = new JPanel();
-				eliminarPanel.setBounds(0, 0, 776, 713);
-				contentPane.add(eliminarPanel);
-				eliminarPanel.setLayout(null);
-				
-				JLabel lblNewLabel_5 = new JLabel("Introduce el producto que quieres eliminar");
-				lblNewLabel_5.setBounds(241, 37, 264, 13);
-				eliminarPanel.add(lblNewLabel_5);
-				
-				JTextPane textPane = new JTextPane();
-				textPane.setBounds(253, 78, 189, 19);
-				eliminarPanel.add(textPane);
-				
-				JLabel lblNewLabel_6 = new JLabel("Introduce la cantidad del producto");
-				lblNewLabel_6.setBounds(253, 208, 201, 13);
-				eliminarPanel.add(lblNewLabel_6);
-				
-				JTextPane textPane_1 = new JTextPane();
-				textPane_1.setBounds(241, 250, 201, 19);
-				eliminarPanel.add(textPane_1);
-				
-				btnEliminar = new JButton("Eliminar");
-				btnEliminar.setBounds(306, 344, 85, 21);
-				eliminarPanel.add(btnEliminar);
 		
 				JPanel atras_1 = new JPanel();
-				atras_1.setBounds(36, 29, 78, 31);
+				atras_1.setBounds(217, 140, 109, 58);
 				contentPane.add(atras_1);
 				
-				btnAtras = new JButton("<---");
-				atras_1.add(btnAtras);
+						btnAtras = new JButton("");
+						atras_1.add(btnAtras);
+						btnAtras.setIcon(new ImageIcon(
+								"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\felchaAtras.png"));
 
-		panelInicial = new JPanel();
-		panelInicial.setBounds(0, 0, 776, 713);
-		contentPane.add(panelInicial);
-		panelInicial.setLayout(null);
+		panelModificarStock = new JPanel();
+		panelModificarStock.setBounds(193, 117, 583, 596);
+		contentPane.add(panelModificarStock);
+		panelModificarStock.setLayout(null);
+		paneles.add(panelModificarStock);
 
-		btnGestionInventario = new JButton("Gestionar Inventario");
-		btnGestionInventario.setBounds(266, 86, 177, 28);
-		panelInicial.add(btnGestionInventario);
+		rdbtnAniadir = new JRadioButton("Aniadir");
+		rdbtnAniadir.setBounds(172, 108, 103, 21);
+		panelModificarStock.add(rdbtnAniadir);
+		grupoStock.add(rdbtnAniadir);
 
-		btnGestionComandas = new JButton("Gestionar Comandas");
-		btnGestionComandas.setBounds(266, 170, 177, 28);
-		panelInicial.add(btnGestionComandas);
+		rdbtnEliminar = new JRadioButton("Quitar");
+		rdbtnEliminar.setBounds(306, 108, 103, 21);
+		panelModificarStock.add(rdbtnEliminar);
+		grupoStock.add(rdbtnEliminar);
 
-		btnGestionCaja = new JButton("Gestionar Caja");
-		btnGestionCaja.setBounds(266, 268, 177, 28);
-		panelInicial.add(btnGestionCaja);
+		boxStock = new JComboBox();
+		boxStock.setBounds(186, 162, 166, 21);
+		panelModificarStock.add(boxStock);
+		
+		btnModStock = new JButton("Modificar");
+		btnModStock.setBounds(223, 237, 85, 21);
+		panelModificarStock.add(btnModStock);
+		
+		spinnerModStock = new JSpinner();
+		spinnerModStock.setBounds(395, 163, 41, 20);
+		panelModificarStock.add(spinnerModStock);
+
+		eliminarPanel = new JPanel();
+		eliminarPanel.setBounds(203, 126, 573, 587);
+		contentPane.add(eliminarPanel);
+		eliminarPanel.setLayout(null);
+		paneles.add(eliminarPanel);
+
+		JLabel lblNewLabel_5 = new JLabel("Introduce el producto que quieres eliminar");
+		lblNewLabel_5.setBounds(149, 79, 264, 13);
+		eliminarPanel.add(lblNewLabel_5);
+
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(231, 200, 85, 21);
+		eliminarPanel.add(btnEliminar);
+
+		boxProductosEliminar = new JComboBox();
+		boxProductosEliminar.setBounds(157, 114, 192, 21);
+		eliminarPanel.add(boxProductosEliminar);
+
+		panelParteArriba = new JPanel();
+		panelParteArriba.setBorder(new LineBorder(new Color(0, 0, 0), 4));
+		panelParteArriba.setBounds(193, 0, 583, 116);
+		contentPane.add(panelParteArriba);
+		panelParteArriba.setLayout(null);
+
+		lblImagenLogo = new JLabel("");
+		lblImagenLogo.setIcon(new ImageIcon(
+				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\logoBar.png"));
+		lblImagenLogo.setBounds(269, 10, 196, 98);
+		panelParteArriba.add(lblImagenLogo);
+
+		lblNewLabel_9 = new JLabel("BIENVENIDOS A");
+		lblNewLabel_9.setFont(new Font("Tw Cen MT Condensed", Font.ITALIC, 24));
+		lblNewLabel_9.setBounds(79, 10, 146, 98);
+		panelParteArriba.add(lblNewLabel_9);
+
+		JPanel panelCentral = new JPanel();
+		panelCentral.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
+		panelCentral.setBounds(10, 0, 180, 713);
+		contentPane.add(panelCentral);
+		panelCentral.setLayout(null);
+
+		btnGestionInventario = new JButton("");
+		btnGestionInventario.setIcon(new ImageIcon(
+				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\gestionInventario.png"));
+		btnGestionInventario.setBounds(10, 254, 156, 87);
+		panelCentral.add(btnGestionInventario);
+
+		btnGestionComandas = new JButton("");
+		btnGestionComandas.setIcon(new ImageIcon(
+				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\imagenComandas.png"));
+		btnGestionComandas.setBounds(10, 403, 156, 87);
+		panelCentral.add(btnGestionComandas);
+
+		btnGestionCaja = new JButton("");
+		btnGestionCaja.setIcon(new ImageIcon(
+				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\caja-registradora.png"));
+		btnGestionCaja.setBounds(10, 537, 156, 87);
+		panelCentral.add(btnGestionCaja);
+
+		btnExit = new JButton("");
+		btnExit.setIcon(new ImageIcon(
+				"C:\\Users\\Luis Jesus\\git\\GestionComandas\\GestionComandas\\src\\imagenes\\apagar.png"));
+		btnExit.setBounds(10, 22, 156, 87);
+		panelCentral.add(btnExit);
+
+		panelGestionarInventario = new JPanel();
+		panelGestionarInventario.setBounds(0, 0, 776, 713);
+		contentPane.add(panelGestionarInventario);
+		panelGestionarInventario.setLayout(null);
+		panelGestionarInventario.setVisible(false);
+
+		btnVerInventario = new JButton("Ver Inventario");
+		btnVerInventario.setBounds(386, 273, 133, 28);
+		panelGestionarInventario.add(btnVerInventario);
+
+		btnAniadirProducto = new JButton("Añadir producto");
+		btnAniadirProducto.setBounds(386, 366, 133, 28);
+		panelGestionarInventario.add(btnAniadirProducto);
+
+		btnEliminarProducto = new JButton("Eliminar Producto");
+		btnEliminarProducto.setBounds(386, 454, 133, 28);
+		panelGestionarInventario.add(btnEliminarProducto);
+
+		btnModificarStock = new JButton("Modificar Stock");
+		btnModificarStock.setBounds(386, 546, 133, 28);
+		panelGestionarInventario.add(btnModificarStock);
 
 		panelPreguntasProducto = new JPanel();
-		panelPreguntasProducto.setBounds(0, 0, 776, 713);
+		panelPreguntasProducto.setBounds(193, 117, 583, 596);
 		contentPane.add(panelPreguntasProducto);
 		panelPreguntasProducto.setLayout(null);
 		panelPreguntasProducto.setVisible(false);
+		paneles.add(panelPreguntasProducto);
 
 		radioBtnSi = new JRadioButton("SI");
-		radioBtnSi.setBounds(182, 116, 103, 21);
+		radioBtnSi.setBounds(25, 155, 103, 21);
 		panelPreguntasProducto.add(radioBtnSi);
 		grupo1.add(radioBtnSi);
 
 		rdbtnNo = new JRadioButton("NO");
-		rdbtnNo.setBounds(287, 116, 103, 21);
+		rdbtnNo.setBounds(151, 155, 103, 21);
 		panelPreguntasProducto.add(rdbtnNo);
 		grupo1.add(rdbtnNo);
 
 		lblPreguntaProducto = new JLabel("\u00BFEl Producto");
-		lblPreguntaProducto.setBounds(182, 57, 196, 13);
+		lblPreguntaProducto.setBounds(25, 120, 196, 13);
 		panelPreguntasProducto.add(lblPreguntaProducto);
 
 		radioBtnCafeinaSi = new JRadioButton("SI");
@@ -266,115 +317,79 @@ public class VistaComandas extends JFrame {
 		componentesBebida.add(lblAzucarBebida);
 
 		btnPonerProducto = new JButton("A\u00F1adir");
-		btnPonerProducto.setBounds(218, 629, 85, 21);
+		btnPonerProducto.setBounds(77, 480, 85, 21);
 		panelPreguntasProducto.add(btnPonerProducto);
-		componentesBebida.add(btnPonerProducto);
 
 		panelAniadirProducto = new JPanel();
 		panelAniadirProducto.setLayout(null);
-		panelAniadirProducto.setBounds(0, 0, 776, 713);
+		panelAniadirProducto.setBounds(203, 126, 573, 587);
 		contentPane.add(panelAniadirProducto);
 		panelAniadirProducto.setVisible(false);
 
 		boxTipoProducto = new JComboBox(opcionesProductos);
-		boxTipoProducto.setBounds(273, 94, 143, 21);
+		boxTipoProducto.setBounds(23, 151, 143, 21);
 		panelAniadirProducto.add(boxTipoProducto);
 
 		lblNewLabel_1 = new JLabel("\u00BFCual sera el costo del producto?");
-		lblNewLabel_1.setBounds(240, 178, 176, 13);
+		lblNewLabel_1.setBounds(168, 268, 176, 13);
 		panelAniadirProducto.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("\u00BFQue tipo de producto quieres a\u00F1adir?");
-		lblNewLabel_2.setBounds(240, 43, 221, 28);
+		lblNewLabel_2.setBounds(10, 91, 221, 28);
 		panelAniadirProducto.add(lblNewLabel_2);
 
 		textCostoProducto = new JTextPane();
-		textCostoProducto.setBounds(251, 232, 165, 19);
+		textCostoProducto.setBounds(179, 329, 165, 19);
 		panelAniadirProducto.add(textCostoProducto);
 
-		lblNewLabel_3 = new JLabel("Introduce ruta de la imagen (opcional)");
-		lblNewLabel_3.setBounds(240, 464, 193, 13);
-		panelAniadirProducto.add(lblNewLabel_3);
-
-		textRutaImagen = new JTextPane();
-		textRutaImagen.setBounds(251, 517, 165, 19);
-		panelAniadirProducto.add(textRutaImagen);
-
 		btnSiguienteProducto = new JButton("Siguiente");
-		btnSiguienteProducto.setBounds(285, 587, 85, 21);
+		btnSiguienteProducto.setBounds(224, 436, 85, 21);
 		panelAniadirProducto.add(btnSiguienteProducto);
 
 		JLabel lblNewLabel_4 = new JLabel("Introduce el nombre del producto");
-		lblNewLabel_4.setBounds(251, 313, 239, 13);
+		lblNewLabel_4.setBounds(270, 99, 239, 13);
 		panelAniadirProducto.add(lblNewLabel_4);
 
 		textPaneNombre = new JTextPane();
-		textPaneNombre.setBounds(251, 372, 165, 19);
+		textPaneNombre.setBounds(282, 151, 165, 19);
 		panelAniadirProducto.add(textPaneNombre);
 		panelAniadirProducto.setVisible(false);
 
-		panelGestionarInventario = new JPanel();
-		panelGestionarInventario.setBounds(0, 0, 776, 713);
-		contentPane.add(panelGestionarInventario);
-		panelGestionarInventario.setLayout(null);
-		panelGestionarInventario.setVisible(false);
-
-		btnVerInventario = new JButton("Ver Inventario");
-		btnVerInventario.setBounds(350, 45, 133, 28);
-		panelGestionarInventario.add(btnVerInventario);
-
-		btnAniadirProducto = new JButton("Añadir producto");
-		btnAniadirProducto.setBounds(350, 129, 133, 28);
-		panelGestionarInventario.add(btnAniadirProducto);
-
-		btnEliminarProducto = new JButton("Eliminar Producto");
-		btnEliminarProducto.setBounds(350, 224, 133, 28);
-		panelGestionarInventario.add(btnEliminarProducto);
-
-		btnModificarStock = new JButton("Modificar Stock");
-		btnModificarStock.setBounds(350, 307, 133, 28);
-		panelGestionarInventario.add(btnModificarStock);
-
 		panelVerInventario = new JPanel();
-		panelVerInventario.setBounds(0, 0, 776, 713);
+		panelVerInventario.setBounds(199, 117, 567, 586);
 		contentPane.add(panelVerInventario);
 		panelVerInventario.setLayout(null);
-		panelVerInventario.setVisible(false);
+		paneles.add(panelVerInventario);
 
-		JLabel lblNewLabel = new JLabel("Bebidas");
-		lblNewLabel.setBounds(59, 65, 120, 27);
+		lblNewLabel = new JLabel("Bebidas");
+		lblNewLabel.setForeground(new Color(0, 128, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(10, 140, 116, 38);
 		panelVerInventario.add(lblNewLabel);
 
 		listBebidas = new JList();
-		listBebidas.setBounds(23, 100, 187, 516);
+		listBebidas.setBounds(10, 188, 155, 388);
 		panelVerInventario.add(listBebidas);
 
-		scrollBebidas = new JScrollPane(listBebidas);
-		scrollBebidas.setBounds(23, 100, 187, 516);
-		panelVerInventario.add(scrollBebidas);
-
 		JLabel lblComidas = new JLabel("Comidas");
-		lblComidas.setBounds(300, 65, 120, 27);
+		lblComidas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblComidas.setForeground(new Color(0, 128, 255));
+		lblComidas.setBounds(220, 140, 116, 38);
 		panelVerInventario.add(lblComidas);
 
 		listComidas = new JList();
-		listComidas.setBounds(264, 100, 187, 516);
+		listComidas.setBounds(194, 188, 150, 388);
 		panelVerInventario.add(listComidas);
 
-		scrollComidas = new JScrollPane(listComidas);
-		scrollComidas.setBounds(264, 100, 187, 516);
-		panelVerInventario.add(scrollComidas);
-
-		JLabel lblComidasPicar = new JLabel("Comidas Picar");
-		lblComidasPicar.setBounds(531, 65, 120, 27);
-		panelVerInventario.add(lblComidasPicar);
+		JLabel lblNewLabel_10 = new JLabel("Comidas Picar");
+		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_10.setForeground(new Color(0, 128, 255));
+		lblNewLabel_10.setBounds(412, 140, 116, 38);
+		panelVerInventario.add(lblNewLabel_10);
 
 		listPicar = new JList();
-		listPicar.setBounds(531, 100, 187, 496);
+		listPicar.setBounds(385, 188, 172, 388);
 		panelVerInventario.add(listPicar);
-		scrollPicar = new JScrollPane(listPicar);
-		scrollPicar.setBounds(531, 100, 187, 496);
-		panelVerInventario.add(scrollPicar);
 
 		guardarBotonesIniciales();
 		guardarBotonesInventario();
@@ -397,9 +412,7 @@ public class VistaComandas extends JFrame {
 	}
 
 	public void guardarPaneles() {
-		paneles.add(panelInicial);
 		paneles.add(panelGestionarInventario);
-		paneles.add(panelVerInventario);
 		paneles.add(panelAniadirProducto);
 	}
 

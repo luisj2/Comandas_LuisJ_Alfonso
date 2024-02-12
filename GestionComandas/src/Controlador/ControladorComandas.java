@@ -2,16 +2,18 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 
 import Modelo.Bebida;
 import Modelo.Comida;
@@ -23,13 +25,18 @@ public class ControladorComandas implements ActionListener {
 
 	private VistaComandas vista;
 	static List<Producto> inventario;
-	static Producto productoAniadir;
+	public static Producto productoAniadir;
+	SpinnerNumberModel modeloSpinner;
+	
 
 	public ControladorComandas(VistaComandas vista) {
 		this.vista = vista;
 		inventario = new ArrayList<Producto>();
 		rellenarInventario();
+		vista.panelesInvisibles();
+		vista.panelGestionarInventario.setVisible(true);
 		vista.visiblesComponentesBebida(false);
+		
 
 		vista.btnSiguienteProducto.addActionListener(this);
 		vista.btnPonerProducto.addActionListener(this);
@@ -42,11 +49,22 @@ public class ControladorComandas implements ActionListener {
 			boton.addActionListener(this);
 		}
 		vista.btnAtras.addActionListener(this);
+		vista.btnExit.addActionListener(this);
+		vista.btnEliminar.addActionListener(this);
+		vista.btnModStock.addActionListener(this);
 
 	}
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		
+	
+		if(vista.btnExit == e.getSource()) {
+			System.exit(0);
+		}
 
 		if (vista.btnGestionInventario == e.getSource()) {
 			vista.panelesInvisibles();
@@ -76,11 +94,61 @@ public class ControladorComandas implements ActionListener {
 		}
 		if(vista.btnAtras == e.getSource()) {
 			vista.panelesInvisibles();
-			vista.panelInicial.setVisible(true);
+			vista.panelGestionarInventario.setVisible(true);
 		}
 		
 		if(vista.btnEliminarProducto == e.getSource()) {
+			vista.panelesInvisibles();
+			vista.eliminarPanel.setVisible(true);
+			agregarProductosAlComboBox(vista.boxProductosEliminar, inventario);
+		}
+		if(vista.btnModificarStock == e.getSource()) {
+			vista.panelesInvisibles();
+			vista.panelModificarStock.setVisible(true);
+			agregarProductosAlComboBox(vista.boxStock, inventario);
 			
+		}
+		if(vista.btnEliminar ==e.getSource()) {
+			
+			for (int i = 0; i < inventario.size(); i++) {
+				if(vista.boxProductosEliminar.getSelectedItem().equals(inventario.get(i).getNombre())) {
+					System.out.println("Producto " +inventario.get(i).getNombre()+" eliminado");
+					inventario.remove(i);
+					break;
+				}
+			}
+			vista.boxProductosEliminar.removeAllItems();
+			agregarProductosAlComboBox(vista.boxProductosEliminar, inventario);
+			
+		}
+		
+		if(vista.btnModStock == e.getSource()) {
+			int numeroModificar = (int) vista.spinnerModStock.getValue();
+			int index = -1;
+			
+			for (int i = 0; i < inventario.size(); i++) {
+				if(vista.boxStock.getSelectedItem().equals(inventario.get(i).getNombre())) {
+					index = i;
+					break;
+				}
+			}
+			
+			
+			if(vista.rdbtnAniadir.isSelected()) {
+				inventario.get(index).setCantidad(inventario.get(index).getCantidad()+numeroModificar);
+				System.out.println("Se han añadido correctamente");
+			}
+			else if(vista.rdbtnEliminar.isSelected()) {
+				if(inventario.get(index).getCantidad()>=numeroModificar) {
+					inventario.get(index).setCantidad(inventario.get(index).getCantidad()-numeroModificar);
+				}else{
+					System.out.println("No puedes quitar tantos "+inventario.get(index).getNombre());
+				}
+				
+			
+			}else {
+				System.out.println("Selecciona alguna de las opciones");
+			}
 		}
 
 	}
@@ -128,7 +196,6 @@ public class ControladorComandas implements ActionListener {
 		productoAniadir = new Producto();
 
 		String coste = vista.textCostoProducto.getText().toString();
-		String rutaImagen = vista.textRutaImagen.getText().toString();
 		boolean rellenarCampos = false;
 		boolean pasoCorrecto = false;
 
@@ -149,17 +216,6 @@ public class ControladorComandas implements ActionListener {
 			}
 		} else {
 			System.out.println("Rellena todos los campos,gracias");
-		}
-
-		if (!rutaImagen.isEmpty()) {
-			try {
-				ImageIcon imagenProducto = new ImageIcon(rutaImagen);
-				productoAniadir.setImagen(imagenProducto);
-				// System.out.println("Imagen correcta");
-
-			} catch (Exception e2) {
-				System.out.println("Introduce una ruta de imagen correcta");
-			}
 		}
 
 		if (pasoCorrecto) {
@@ -239,5 +295,14 @@ public class ControladorComandas implements ActionListener {
 		lista.setModel(modelo);
 
 	}
+	
+	public static void agregarProductosAlComboBox(JComboBox comboBox, List<Producto> inventario2) {
+        for (Producto producto : inventario2) {
+            comboBox.addItem(producto.getNombre());
+        }
+    }
 
+
+
+	
 }
