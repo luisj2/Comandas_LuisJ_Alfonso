@@ -23,6 +23,9 @@ public class Bebida extends Producto {
 		this.azucarada = azucarada;
 	}
 	
+	public void test() {
+		
+	}
 
 	public Bebida() {
 	}
