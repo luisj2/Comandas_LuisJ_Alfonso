@@ -34,6 +34,7 @@ public class ControladorComandas implements ActionListener {
 	Comanda [] comandas = new Comanda[16];
 	Comanda comanda = null;
 	List <Producto> produs = new ArrayList<>();
+	int posicionArray = -1;
 
 	public ControladorComandas(VistaComandas vista) {
 		this.vista = vista;
@@ -78,6 +79,12 @@ public class ControladorComandas implements ActionListener {
 
 			if(modeloLista.size() >0) {
 				mostrarMensaje("Pago realizado \n correctamente");
+				for (int i = 0; i < vista.sitioComanda.size(); i++) {
+					if(vista.sitioComanda.get(i).getName().equals(vista.lblNombreSitio.getText().toString())){
+						vista.sitioComanda.get(i).setBackground(null);
+						comandas[i] = null;
+					}
+				}
 			}else {
 				mostrarMensaje("Añade algun producto");
 			}
@@ -110,6 +117,7 @@ public class ControladorComandas implements ActionListener {
 			for (int i = 0; i < comandas.length; i++) {
 				if(comandas[i] != null && comandas[i].getMesa().equals(vista.lblNombreSitio.getText().toString())) {
 					comandaPago = comandas[i];
+					posicionArray = i;
 				}
 			}
 			if(comandaPago != null) {
