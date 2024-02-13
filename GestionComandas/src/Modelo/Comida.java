@@ -12,6 +12,13 @@ public class Comida extends Producto {
 		super.cantidad = cantidad;
 		this.esVegetariana = esVegetariana;
 	}
+	
+
+
+	public Comida() {
+		super();
+	}
+
 
 
 	public boolean isEsVegetariana() {

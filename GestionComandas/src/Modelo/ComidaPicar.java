@@ -14,6 +14,14 @@ public class ComidaPicar extends Producto {
 		super.precio = precio;
 		this.picante = picante;
 	}
+	
+	
+
+	public ComidaPicar() {
+		super();
+	}
+
+
 
 	public boolean isPicante() {
 		return picante;
